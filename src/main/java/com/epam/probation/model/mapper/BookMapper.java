@@ -1,19 +1,27 @@
 package com.epam.probation.model.mapper;
 
 import com.epam.probation.model.Book;
-import org.springframework.jdbc.core.RowMapper;
+import com.epam.probation.model.DTO.BookDTO;
+import org.springframework.stereotype.Component;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
+@Component
+public class BookMapper {
 
-public class BookMapper implements RowMapper<Book> {
-
-    @Override
-    public Book mapRow(ResultSet resultSet, int i) throws SQLException {
+    public Book dtoToModel(BookDTO dto) {
         return Book.builder()
-                .id(resultSet.getLong("id"))
-                .name(resultSet.getString("name"))
-                .pages(resultSet.getInt("pages"))
+                .id(dto.getId())
+                .pages(dto.getPages())
+                .name(dto.getName())
+                .author(dto.getAuthor())
+                .build();
+    }
+
+    public BookDTO modelToDTO(Book model) {
+        return BookDTO.builder()
+                .id(model.getId())
+                .pages(model.getPages())
+                .name(model.getName())
+                .author(model.getAuthor())
                 .build();
     }
 }

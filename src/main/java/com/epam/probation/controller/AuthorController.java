@@ -1,24 +1,31 @@
 package com.epam.probation.controller;
 
+import com.epam.probation.exception.AuthorNotFoundException;
 import com.epam.probation.model.Author;
+import com.epam.probation.model.DTO.AuthorDTO;
+import com.epam.probation.model.mapper.AuthorMapper;
 import com.epam.probation.service.AuthorService;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequiredArgsConstructor
 @RequestMapping("/author")
 public class AuthorController {
 
     private final AuthorService authorService;
+    private final AuthorMapper authorMapper;
 
-    @GetMapping("/{id}")
-    public Author getAuthor(@RequestParam("id") Long id) {
-        return authorService.getById(id);
+    public AuthorController(@Autowired AuthorService authorService, AuthorMapper authorMapper) {
+        this.authorService = authorService;
+        this.authorMapper = authorMapper;
     }
 
+    @GetMapping("/{id}")
+    public AuthorDTO getAuthor(@RequestParam("id") Long id) throws AuthorNotFoundException {
+        return authorMapper.modelToDTO(authorService.getById(id));
+    }
 
     @GetMapping
     public List<Author> getAllAuthor() {
@@ -26,8 +33,8 @@ public class AuthorController {
     }
 
     @PostMapping
-    public Author saveAuthor(@RequestBody Author author) {
-        return authorService.save(author);
+    public Author saveAuthor(@RequestBody AuthorDTO authorDTO) {
+        return authorService.save(authorMapper.dtoToModel(authorDTO));
     }
 
     @DeleteMapping("/{id}")

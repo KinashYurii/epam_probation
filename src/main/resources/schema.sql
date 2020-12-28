@@ -1,12 +1,13 @@
+
 create table author (
 	id int8  primary key,
-    _name varchar(50),
+    author_name varchar(50),
     age int
 );
 
 create table book (
 	id int8  primary key,
-    _name varchar(50),
+    book_name varchar(50),
     age int,
     author_id  int8,
        foreign key(author_id)

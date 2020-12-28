@@ -3,12 +3,11 @@ package com.epam.probation.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import org.springframework.data.annotation.Id;
 
-import javax.persistence.Column;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Set;
 
+@Entity
 @Table(name = "author")
 @Builder
 @Data
@@ -16,16 +15,14 @@ import java.util.Set;
 public class Author {
 
     @Id
-    public Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "author_id")
+    private Long id;
 
-    @Column(name = "author_name")
-    public String name;
+    private String name;
 
     private Integer age;
 
-//    private Set<BookRef> bookIds;
-//
-//    public void addBook(Book book) {
-//        this.bookIds.add(new BookRef(book.getId()));
-//    }
+    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
+    private Set<Book> books;
 }

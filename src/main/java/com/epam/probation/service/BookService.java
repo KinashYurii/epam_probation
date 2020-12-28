@@ -1,11 +1,12 @@
 package com.epam.probation.service;
 
+import com.epam.probation.exception.BookNotFoundException;
 import com.epam.probation.model.Book;
 
 import java.util.List;
 
 public interface BookService {
-    Book getById(Long id);
+    Book getById(Long id) throws BookNotFoundException;
 
     List<Book> getAll();
 

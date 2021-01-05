@@ -21,8 +21,4 @@ public class Book {
     public String name;
 
     public Integer pages;
-
-    @ManyToOne
-    @JoinColumn(name = "author_id")
-    public Author author;
 }

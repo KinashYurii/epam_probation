@@ -4,6 +4,9 @@ import com.epam.probation.model.Author;
 import com.epam.probation.model.DTO.AuthorDTO;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Component
 public class AuthorMapper {
 
@@ -23,5 +26,11 @@ public class AuthorMapper {
                 .name(model.getName())
                 .books(model.getBooks())
                 .build();
+    }
+
+    public List<AuthorDTO> modelsToDtos(List<Author> authors) {
+        return authors.stream()
+                .map(this::modelToDTO)
+                .collect(Collectors.toList());
     }
 }

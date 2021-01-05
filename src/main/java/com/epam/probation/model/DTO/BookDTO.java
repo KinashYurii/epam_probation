@@ -15,6 +15,4 @@ public class BookDTO {
     public String name;
 
     public Integer pages;
-
-    public Author author;
 }

@@ -12,7 +12,6 @@ public class BookMapper {
                 .id(dto.getId())
                 .pages(dto.getPages())
                 .name(dto.getName())
-                .author(dto.getAuthor())
                 .build();
     }
 
@@ -21,7 +20,6 @@ public class BookMapper {
                 .id(model.getId())
                 .pages(model.getPages())
                 .name(model.getName())
-                .author(model.getAuthor())
                 .build();
     }
 }

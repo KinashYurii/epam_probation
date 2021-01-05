@@ -5,7 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Table(name = "author")
@@ -23,6 +23,6 @@ public class Author {
 
     private Integer age;
 
-    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
-    private Set<Book> books;
+    @OneToMany(mappedBy = "id",cascade = CascadeType.ALL)
+    private List<Book> books;
 }

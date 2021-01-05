@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
-import java.util.Set;
+import java.util.List;
 
 @Builder
 @Data
@@ -18,5 +18,5 @@ public class AuthorDTO {
 
     private Integer age;
 
-    private Set<Book> books;
+    private List<Book> books;
 }

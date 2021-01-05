@@ -1,7 +1,6 @@
 package com.epam.probation.controller;
 
 import com.epam.probation.exception.AuthorNotFoundException;
-import com.epam.probation.model.Author;
 import com.epam.probation.model.DTO.AuthorDTO;
 import com.epam.probation.model.mapper.AuthorMapper;
 import com.epam.probation.service.AuthorService;
@@ -28,13 +27,13 @@ public class AuthorController {
     }
 
     @GetMapping
-    public List<Author> getAllAuthor() {
-        return authorService.getAll();
+    public List<AuthorDTO> getAllAuthor() {
+        return authorMapper.modelsToDtos(authorService.getAll());
     }
 
     @PostMapping
-    public Author saveAuthor(@RequestBody AuthorDTO authorDTO) {
-        return authorService.save(authorMapper.dtoToModel(authorDTO));
+    public AuthorDTO saveAuthor(@RequestBody AuthorDTO authorDTO) {
+        return authorMapper.modelToDTO(authorService.save(authorMapper.dtoToModel(authorDTO)));
     }
 
     @DeleteMapping("/{id}")

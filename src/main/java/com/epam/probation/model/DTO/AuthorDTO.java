@@ -1,6 +1,6 @@
 package com.epam.probation.model.DTO;
 
-import com.epam.probation.model.Book;
+import com.epam.probation.model.entity.Book;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

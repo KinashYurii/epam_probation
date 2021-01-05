@@ -1,7 +1,7 @@
 package com.epam.probation.controller;
 
 import com.epam.probation.exception.BookNotFoundException;
-import com.epam.probation.model.Book;
+import com.epam.probation.model.entity.Book;
 import com.epam.probation.model.DTO.BookDTO;
 import com.epam.probation.model.mapper.BookMapper;
 import com.epam.probation.service.BookService;

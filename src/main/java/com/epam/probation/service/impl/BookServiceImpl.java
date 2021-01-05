@@ -1,8 +1,8 @@
 package com.epam.probation.service.impl;
 
-import com.epam.probation.DAO.BookRepository;
+import com.epam.probation.DAO.book.BookRepository;
 import com.epam.probation.exception.BookNotFoundException;
-import com.epam.probation.model.Book;
+import com.epam.probation.model.entity.Book;
 import com.epam.probation.service.BookService;
 import org.springframework.stereotype.Service;
 

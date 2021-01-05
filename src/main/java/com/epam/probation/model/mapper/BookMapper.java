@@ -1,6 +1,6 @@
 package com.epam.probation.model.mapper;
 
-import com.epam.probation.model.Book;
+import com.epam.probation.model.entity.Book;
 import com.epam.probation.model.DTO.BookDTO;
 import org.springframework.stereotype.Component;
 

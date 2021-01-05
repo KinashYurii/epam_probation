@@ -1,6 +1,5 @@
 package com.epam.probation.model.DTO;
 
-import com.epam.probation.model.Author;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

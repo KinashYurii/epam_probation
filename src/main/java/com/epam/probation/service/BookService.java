@@ -1,7 +1,7 @@
 package com.epam.probation.service;
 
 import com.epam.probation.exception.BookNotFoundException;
-import com.epam.probation.model.Book;
+import com.epam.probation.model.entity.Book;
 
 import java.util.List;
 

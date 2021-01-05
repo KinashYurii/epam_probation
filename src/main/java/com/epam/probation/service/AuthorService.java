@@ -1,7 +1,7 @@
 package com.epam.probation.service;
 
 import com.epam.probation.exception.AuthorNotFoundException;
-import com.epam.probation.model.Author;
+import com.epam.probation.model.entity.Author;
 
 import java.util.List;
 

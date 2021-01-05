@@ -1,4 +1,4 @@
-package com.epam.probation.model;
+package com.epam.probation.model.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,4 +21,8 @@ public class Book {
     public String name;
 
     public Integer pages;
+
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    public Author author;
 }

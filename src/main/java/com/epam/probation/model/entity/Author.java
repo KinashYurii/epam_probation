@@ -1,4 +1,4 @@
-package com.epam.probation.model;
+package com.epam.probation.model.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,6 +23,6 @@ public class Author {
 
     private Integer age;
 
-    @OneToMany(mappedBy = "id",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "author",cascade = CascadeType.ALL)
     private List<Book> books;
 }

@@ -1,6 +1,7 @@
 package com.epam.probation.service;
 
 import com.epam.probation.exception.AuthorNotFoundException;
+import com.epam.probation.model.DTO.AuthorDTO;
 import com.epam.probation.model.entity.Author;
 
 import java.util.List;
@@ -9,7 +10,7 @@ public interface AuthorService {
 
     Author getById(Long id) throws AuthorNotFoundException;
 
-    List<Author> getAll();
+    List<AuthorDTO> getAll();
 
     Author save(Author author);
 

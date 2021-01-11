@@ -28,7 +28,7 @@ public class AuthorController {
 
     @GetMapping
     public List<AuthorDTO> getAllAuthor() {
-        return authorMapper.modelsToDtos(authorService.getAll());
+        return authorService.getAll();
     }
 
     @PostMapping

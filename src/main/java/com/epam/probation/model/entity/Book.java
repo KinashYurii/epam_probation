@@ -1,17 +1,20 @@
 package com.epam.probation.model.entity;
 
+import java.io.Serializable;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.*;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "book")
 @Builder
 @Data
 @AllArgsConstructor
-public class Book {
+@NoArgsConstructor
+public class Book implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

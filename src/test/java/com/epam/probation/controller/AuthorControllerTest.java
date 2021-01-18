@@ -1,10 +1,9 @@
 package com.epam.probation.controller;
 
 import com.epam.probation.DAO.author.AuthorRepository;
+import com.epam.probation.model.DTO.AuthorDTO;
 import com.epam.probation.model.entity.Author;
 import com.epam.probation.model.entity.Book;
-import com.epam.probation.model.DTO.AuthorDTO;
-import com.epam.probation.model.mapper.AuthorMapper;
 import com.epam.probation.service.AuthorService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,23 +32,19 @@ class AuthorControllerTest {
     @Autowired
     private AuthorService authorService;
 
-    @Autowired
-    private AuthorMapper authorMapper;
-
     @MockBean
     private AuthorRepository authorDAO;
 
-
     @Test
-    public void greetingShouldReturnDefaultMessage() throws Exception {
+    public void greetingShouldReturnDefaultMessage() {
         final String getAllURL = "http://localhost:" + port + "/author";
 
         when(authorDAO.findAll()).thenReturn(getDefaultAuthorList());
         ResponseEntity<AuthorDTO[]> response = restTemplate.getForEntity(getAllURL, AuthorDTO[].class);
         List<AuthorDTO> authors = Arrays.asList(Objects.requireNonNull(response.getBody()));
-        assertEquals(authors.size(),2);
-        assertEquals(authors.get(0).getBooks().size(),1);
-        assertEquals(authors.get(1).getBooks().size(),2);
+        assertEquals(authors.size(), 2);
+        assertEquals(authors.get(0).getBooks().size(), 1);
+        assertEquals(authors.get(1).getBooks().size(), 2);
     }
 
     private List<Author> getDefaultAuthorList() {
@@ -66,12 +61,14 @@ class AuthorControllerTest {
     }
 
     private Author buildAuthor(Long id, List<Book> books, String name, Integer age) {
-        return Author.builder()
+        Author author = Author.builder()
                 .id(id)
-                .books(books)
                 .name(name)
                 .age(age)
                 .build();
+        books.forEach(book -> book.setAuthor(author));
+        author.setBooks(books);
+        return author;
     }
 
     private Book buildBook(Long id, String name, Integer pages) {

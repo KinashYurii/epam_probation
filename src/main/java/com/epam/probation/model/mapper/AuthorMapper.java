@@ -1,36 +1,34 @@
 package com.epam.probation.model.mapper;
 
-import com.epam.probation.model.entity.Author;
 import com.epam.probation.model.DTO.AuthorDTO;
-import org.springframework.stereotype.Component;
+import com.epam.probation.model.entity.Author;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Component
 public class AuthorMapper {
 
-    public Author dtoToModel(AuthorDTO dto) {
+    public static Author dtoToModel(AuthorDTO dto) {
         return Author.builder()
                 .id(dto.getId())
                 .age(dto.getAge())
                 .name(dto.getName())
-                .books(dto.getBooks())
+                .books(BookMapper.dtoToModels(dto.getBooks()))
                 .build();
     }
 
-    public AuthorDTO modelToDTO(Author model) {
+    public static AuthorDTO modelToDTO(Author model) {
         return AuthorDTO.builder()
                 .id(model.getId())
                 .age(model.getAge())
                 .name(model.getName())
-                .books(model.getBooks())
+                .books(BookMapper.modelToDTOs(model.getBooks()))
                 .build();
     }
 
-    public List<AuthorDTO> modelsToDtos(List<Author> authors) {
+    public static List<AuthorDTO> modelsToDTOs(List<Author> authors) {
         return authors.stream()
-                .map(this::modelToDTO)
+                .map(AuthorMapper::modelToDTO)
                 .collect(Collectors.toList());
     }
 }

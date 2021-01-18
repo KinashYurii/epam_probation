@@ -2,7 +2,9 @@ package com.epam.probation.service.impl;
 
 import com.epam.probation.DAO.book.BookRepository;
 import com.epam.probation.exception.BookNotFoundException;
+import com.epam.probation.model.DTO.BookDTO;
 import com.epam.probation.model.entity.Book;
+import com.epam.probation.model.mapper.BookMapper;
 import com.epam.probation.service.BookService;
 import org.springframework.stereotype.Service;
 
@@ -18,19 +20,19 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Book getById(Long id) throws BookNotFoundException {
-        return bookRepository.findById(id).orElseThrow(() -> new BookNotFoundException(id));
+    public BookDTO getById(Long id) throws BookNotFoundException {
+        return BookMapper.modelToDTO(
+                bookRepository.findById(id).orElseThrow(() -> new BookNotFoundException("Book", id)));
     }
 
     @Override
-    public List<Book> getAll() {
-        return bookRepository.findAll();
+    public List<BookDTO> getAll() {
+        return BookMapper.modelToDTOs(bookRepository.findAll());
     }
 
     @Override
-    public Book save(Book book) {
-        bookRepository.save(book);
-        return book;
+    public BookDTO save(Book book) {
+        return BookMapper.modelToDTO(bookRepository.save(book));
     }
 
     @Override

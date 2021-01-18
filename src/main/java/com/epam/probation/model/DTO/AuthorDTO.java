@@ -4,12 +4,14 @@ import com.epam.probation.model.entity.Book;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Builder
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class AuthorDTO {
 
     private Long id;
@@ -18,5 +20,5 @@ public class AuthorDTO {
 
     private Integer age;
 
-    private List<Book> books;
+    private List<BookDTO> books;
 }

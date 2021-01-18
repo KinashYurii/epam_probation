@@ -1,13 +1,14 @@
 package com.epam.probation.model.mapper;
 
-import com.epam.probation.model.entity.Book;
 import com.epam.probation.model.DTO.BookDTO;
-import org.springframework.stereotype.Component;
+import com.epam.probation.model.entity.Book;
 
-@Component
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class BookMapper {
 
-    public Book dtoToModel(BookDTO dto) {
+    public static Book dtoToModel(BookDTO dto) {
         return Book.builder()
                 .id(dto.getId())
                 .pages(dto.getPages())
@@ -15,11 +16,24 @@ public class BookMapper {
                 .build();
     }
 
-    public BookDTO modelToDTO(Book model) {
+    public static BookDTO modelToDTO(Book model) {
         return BookDTO.builder()
                 .id(model.getId())
                 .pages(model.getPages())
                 .name(model.getName())
+                .authorId(model.author.getId())
                 .build();
+    }
+
+    public static List<Book> dtoToModels(List<BookDTO> dtos) {
+        return dtos.stream()
+                .map(BookMapper::dtoToModel)
+                .collect(Collectors.toList());
+    }
+
+    public static List<BookDTO> modelToDTOs(List<Book> models) {
+        return models.stream()
+                .map(BookMapper::modelToDTO)
+                .collect(Collectors.toList());
     }
 }

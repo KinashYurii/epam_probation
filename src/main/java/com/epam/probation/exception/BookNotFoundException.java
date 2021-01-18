@@ -1,8 +1,8 @@
 package com.epam.probation.exception;
 
-public class BookNotFoundException extends Exception {
+public class BookNotFoundException extends NotFoundException {
 
-    public BookNotFoundException(Long id) {
-        super(String.format("Book not found with id %d", id));
+    public BookNotFoundException(String name, Long id) {
+        super(name, id);
     }
 }

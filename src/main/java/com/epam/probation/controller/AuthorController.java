@@ -14,26 +14,24 @@ import java.util.List;
 public class AuthorController {
 
     private final AuthorService authorService;
-    private final AuthorMapper authorMapper;
 
-    public AuthorController(@Autowired AuthorService authorService, AuthorMapper authorMapper) {
+    public AuthorController(@Autowired AuthorService authorService) {
         this.authorService = authorService;
-        this.authorMapper = authorMapper;
     }
 
     @GetMapping("/{id}")
     public AuthorDTO getAuthor(@RequestParam("id") Long id) throws AuthorNotFoundException {
-        return authorMapper.modelToDTO(authorService.getById(id));
+        return authorService.getById(id);
     }
 
     @GetMapping
     public List<AuthorDTO> getAllAuthor() {
-        return authorMapper.modelsToDtos(authorService.getAll());
+        return authorService.getAll();
     }
 
     @PostMapping
     public AuthorDTO saveAuthor(@RequestBody AuthorDTO authorDTO) {
-        return authorMapper.modelToDTO(authorService.save(authorMapper.dtoToModel(authorDTO)));
+        return authorService.save(AuthorMapper.dtoToModel(authorDTO));
     }
 
     @DeleteMapping("/{id}")

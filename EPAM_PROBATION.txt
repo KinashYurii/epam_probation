@@ -1,0 +1,3 @@
+1. CRUD (AUTHOR,BOOKS) only JDBC-template, swagger
+2. Spring Data,two db,@allArg, test.
+3.3. One DB, Check REST, controllerAdvice(NotFOUND), (ErrorCODE, Message)->from APPLICATION (confProp) + exep test (verify)

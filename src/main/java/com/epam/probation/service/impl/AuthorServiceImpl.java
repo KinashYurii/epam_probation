@@ -2,7 +2,9 @@ package com.epam.probation.service.impl;
 
 import com.epam.probation.DAO.author.AuthorRepository;
 import com.epam.probation.exception.AuthorNotFoundException;
+import com.epam.probation.model.DTO.AuthorDTO;
 import com.epam.probation.model.entity.Author;
+import com.epam.probation.model.mapper.AuthorMapper;
 import com.epam.probation.service.AuthorService;
 import org.springframework.stereotype.Service;
 
@@ -18,19 +20,21 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public Author getById(Long id) throws AuthorNotFoundException {
-        return authorDAO.findById(id).orElseThrow(() -> new AuthorNotFoundException(id));
+    public AuthorDTO getById(Long id) throws AuthorNotFoundException {
+        return AuthorMapper.modelToDTO(
+                authorDAO.findById(id).orElseThrow(() -> new AuthorNotFoundException("Author", id)));
     }
 
     @Override
-    public List<Author> getAll() {
-        return authorDAO.findAll();
+    public List<AuthorDTO> getAll() {
+        return AuthorMapper.modelsToDTOs(authorDAO.findAll());
     }
 
     @Override
-    public Author save(Author author) {
+    public AuthorDTO save(Author author) {
+        author.getBooks().forEach(book -> book.setAuthor(author));
         authorDAO.save(author);
-        return author;
+        return AuthorMapper.modelToDTO(author);
     }
 
     @Override

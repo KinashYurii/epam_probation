@@ -3,6 +3,7 @@ package com.epam.probation.model.entity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
@@ -11,6 +12,7 @@ import javax.persistence.*;
 @Builder
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class Book {
 
     @Id

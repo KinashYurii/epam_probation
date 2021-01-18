@@ -9,13 +9,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class BookDTO {
+public class ExceptionDTO {
 
-    public Long id;
-
-    public String name;
-
-    public Integer pages;
-
-    public Long authorId;
+    private String code;
+    private String message;
 }

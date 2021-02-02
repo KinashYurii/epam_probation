@@ -1,6 +1,6 @@
 package com.epam.probation.controller;
 
-import com.epam.probation.DAO.author.AuthorRepository;
+import com.epam.probation.DAO.AuthorRepository;
 import com.epam.probation.model.DTO.AuthorDTO;
 import com.epam.probation.model.entity.Author;
 import com.epam.probation.model.entity.Book;

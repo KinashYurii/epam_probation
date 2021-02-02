@@ -1,6 +1,6 @@
 package com.epam.probation.service.impl;
 
-import com.epam.probation.DAO.book.BookRepository;
+import com.epam.probation.DAO.BookRepository;
 import com.epam.probation.exception.BookNotFoundException;
 import com.epam.probation.model.DTO.BookDTO;
 import com.epam.probation.model.entity.Book;

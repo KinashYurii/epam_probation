@@ -1,7 +1,0 @@
-exception-map:
-  not-found:
-    code: 404
-    message: not found
-  bad-request:
-    code: 400
-    message: bad request

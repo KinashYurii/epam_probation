@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
-//@PropertySource({"classpath:exception.yaml"})
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

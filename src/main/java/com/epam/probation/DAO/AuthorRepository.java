@@ -1,4 +1,4 @@
-package com.epam.probation.DAO.author;
+package com.epam.probation.DAO;
 
 
 import com.epam.probation.model.entity.Author;

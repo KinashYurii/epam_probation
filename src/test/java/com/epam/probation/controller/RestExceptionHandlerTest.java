@@ -1,6 +1,6 @@
 package com.epam.probation.controller;
 
-import com.epam.probation.DAO.author.AuthorRepository;
+import com.epam.probation.DAO.AuthorRepository;
 import com.epam.probation.exception.AuthorNotFoundException;
 import com.epam.probation.service.AuthorService;
 import org.junit.jupiter.api.Assertions;
